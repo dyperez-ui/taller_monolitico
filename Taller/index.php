@@ -29,15 +29,15 @@ $result = $conexDb->query($sql);
 <head>
     <meta charset="UTF-8">
     
-    <title>Contactos</title>
+    <title>Estudiantes</title>
 </head>
 
 <body>
    
 
-        <h1>Lista de contactos</h1>
+        <h1>Lista de Estudiante</h1>
     <br>
-    <a href="contacto-form.php">Crear</a>
+    <a href="views/estudiantes.php">Agregar Estudiante</a>
     <table>
         <thead>
             <tr>

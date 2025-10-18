@@ -1,6 +1,6 @@
 <?php
 
-class GrupoAvanzadaDB
+class notasDB
 {
     private $hostDb = "localhost";
     private $userDb = "root";
@@ -26,7 +26,7 @@ class GrupoAvanzadaDB
         $this->conexDb->close();
     }
 
-    public function execSQL($sql, $isSelect, ...$bindParam = null)
+    public function execSQL($sql, $isSelect, ...$bindParam)
     {
         $prepare = $this->conexDb->prepare($sql);
         if (!empty($bindParam)) {

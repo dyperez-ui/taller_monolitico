@@ -10,7 +10,7 @@ class EstudiantesController
 
     public function queryAllContactos()
     {
-        $estudiante = new \Estudiante();
+        $estudiante = new Estudiante();
         return $estudiante -> all();
     }
 

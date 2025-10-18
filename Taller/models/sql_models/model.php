@@ -1,5 +1,5 @@
 <?php
-
+namespace Taller\Models\Sql_models;
 abstract class Model
 {
     abstract public function all();

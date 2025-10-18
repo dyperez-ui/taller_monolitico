@@ -1,13 +1,13 @@
 <?php
-class SqlContacto{
+class SqlEstudiante{
 
     public static function selectAll(){
-        $sql = "select * from Estudiante";
+        $sql = "select * from estudiantes";
         return $sql;
     }
 
     public static function selectByID(){
-        $sql = "select * from Estudiante id=?";
+        $sql = "select * from estudiante id=?";
         return $sql;
     }
 

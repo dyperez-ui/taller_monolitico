@@ -5,13 +5,13 @@ require __DIR__ . "/../models/Estudiante.php";
 
 use App\Models\Estudiante;
 
-class ContactosController
+class EstudiantesController
 {
 
     public function queryAllContactos()
     {
-        $contacto = new Estudiante();
-        return $contacto->all();
+        $estudiante = new \Estudiante();
+        return $estudiante -> all();
     }
 
 }

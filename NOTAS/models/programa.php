@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-require __DIR__ . "/sql_models/sql-programa.php";
+require __DIR__ . "/sql_models/sql-Programa.php";
 require __DIR__ . "/sql_models/model.php";
 require __DIR__ . "/databases/notas-db.php";
 
@@ -49,6 +49,7 @@ public function __construct($codigo = null, $nombre = null)
     }
     public function find()
     {
+        
     }
     public function insert()
     {
@@ -58,7 +59,7 @@ public function __construct($codigo = null, $nombre = null)
         $result = $db->execSQL(
             $sql,
             false,
-            "ss", // dos strings: codigo, nombre
+            "ss", 
             $this->codigo,
             $this->nombre,
         );

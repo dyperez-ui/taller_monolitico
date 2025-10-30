@@ -38,7 +38,7 @@ class ProgramaController
         $programa = new Programa($codigo);
 
         if ($programa->tieneEstudiantes() || $programa->tieneMaterias()) {
-            return "relaciones"; // no se puede eliminar
+            return "relaciones";
         }
 
         return $programa->delete();
@@ -52,9 +52,8 @@ class ProgramaController
 
         $programa = new Programa($request['codigo'], $request['nombre']);
 
-        // Verificar relaciones
         if ($programa->tieneEstudiantes() || $programa->tieneMaterias()) {
-            return "relaciones"; // no se puede modificar
+            return "relaciones"; 
         }
 
         return $programa->update();

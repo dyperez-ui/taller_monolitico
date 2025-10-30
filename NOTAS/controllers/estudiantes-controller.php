@@ -1,56 +1,72 @@
 <?php
 namespace App\Controllers;
 
-require __DIR__ . "/../models/contacto.php";
+require __DIR__ . "/../models/estudiante.php";
 
-use App\Models\Estudiante;
+use App\Models\estudiante;
 
-class EstudiantesController
+class EstudianteController
 {
-
-    public function queryAllContactos()
+    public function queryAllEstudiantes()
     {
-        $contacto = new Estudiante();
-        return $contacto->all();
+        $estudiante = new Estudiante();
+        return $estudiante->all();
     }
 
-    public function saveNewContacto($request)
-    {
-        if (empty($request['nombre'])) {
-            return false;
-        }
-        $contacto = new  Estudiante();
-        $contacto->set('nombre', $request['nombre']);
-        $contacto->set('telefono', $request['telefono']);
-        $contacto->set('email', $request['email']);
-        return $contacto->insert();
-    }
-
-    public function deleteContacto($request)
-    {
-        if (empty($request['id'])) {
-            return false;
-        }
-        $contacto = new  Estudiante();
-        $contacto->set('id', $request['id']);
-        return $contacto->delete();
-    }
-
-    public function updateContacto($request)
+    public function saveNewEstudiante($request)
     {
         if (
-            empty($request['id'])
-            || empty($request['nombre'])
-            || empty($request['telefono'])
+            empty($request['codigo']) ||
+            empty($request['nombre']) ||
+            empty($request['email']) ||
+            empty($request['programa'])
         ) {
             return false;
         }
-        $contacto = new  Estudiante ();
-        $contacto->set('nombre', $request['nombre']);
-        $contacto->set('telefono', $request['telefono']);
-        $contacto->set('email', $request['email']);
-        $contacto->set('id', $request['id']);
-        return $contacto->update();
+
+        $estudiante = new Estudiante(
+            $request['codigo'],
+            $request['nombre'],
+            $request['email'],
+            $request['programa']
+        );
+
+        return $estudiante->insert();
+    }
+
+    public function deleteEstudiante($request)
+    {
+        if (empty($request['codigo'])) {
+            return false;
+        }
+
+        $estudiante = new Estudiante($request['codigo']);
+
+        return $estudiante->delete();
+    }
+
+
+    public function updateEstudiante($request)
+    {
+        if (
+            empty($request['codigo']) ||
+            empty($request['nombre']) ||
+            empty($request['email']) ||
+            empty($request['programa'])
+        ) {
+            return false;
+        }
+
+        $estudiante = new Estudiante(
+            $request['codigo'],
+            $request['nombre'],
+            $request['email'],
+            $request['programa']
+        );
+
+        
+
+        return $estudiante->update();
     }
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2025 a las 00:09:38
+-- Tiempo de generación: 30-10-2025 a las 00:46:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -73,6 +73,7 @@ INSERT INTO `materias` (`codigo`, `nombre`, `programa`) VALUES
 --
 
 CREATE TABLE `notas` (
+  `id` int(11) NOT NULL,
   `materia` varchar(4) NOT NULL,
   `estudiante` varchar(5) NOT NULL,
   `actividad` varchar(50) NOT NULL,
@@ -83,12 +84,12 @@ CREATE TABLE `notas` (
 -- Volcado de datos para la tabla `notas`
 --
 
-INSERT INTO `notas` (`materia`, `estudiante`, `actividad`, `nota`) VALUES
-('1101', '10001', 'Ejemplo 1', 3.00),
-('1101', '10002', 'Ejemplo 1', 4.00),
-('1102', '10001', 'Ejemplo 2', 3.00),
-('1102', '10002', 'Ejemplo 2', 3.00),
-('2201', '10003', 'Act. 1', 3.50);
+INSERT INTO `notas` (`id`, `materia`, `estudiante`, `actividad`, `nota`) VALUES
+(1, '1101', '10001', 'Ejemplo 1', 3.00),
+(2, '1101', '10002', 'Ejemplo 1', 4.00),
+(3, '1102', '10001', 'Ejemplo 2', 3.00),
+(4, '1102', '10002', 'Ejemplo 2', 3.00),
+(5, '2101', '10003', 'Act. 1', 3.50);
 
 -- --------------------------------------------------------
 
@@ -131,7 +132,7 @@ ALTER TABLE `materias`
 -- Indices de la tabla `notas`
 --
 ALTER TABLE `notas`
-  ADD PRIMARY KEY (`materia`,`estudiante`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_estudiantes_nota` (`estudiante`);
 
 --
@@ -139,6 +140,16 @@ ALTER TABLE `notas`
 --
 ALTER TABLE `programas`
   ADD PRIMARY KEY (`codigo`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `notas`
+--
+ALTER TABLE `notas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -160,8 +171,7 @@ ALTER TABLE `materias`
 -- Filtros para la tabla `notas`
 --
 ALTER TABLE `notas`
-  ADD CONSTRAINT `fk_estudiantes_nota` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`),
-  ADD CONSTRAINT `fk_materias_nota` FOREIGN KEY (`materia`) REFERENCES `materias` (`codigo`);
+  ADD CONSTRAINT `fk_estudiantes_nota` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

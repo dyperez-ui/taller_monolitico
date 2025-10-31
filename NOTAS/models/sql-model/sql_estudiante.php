@@ -4,22 +4,22 @@ namespace App\Models\SQLModels;
 class SqlEstudiante{
 
     public static function selectAll(){
-         return "SELECT * from estudiante";
+         return "SELECT * from estudiantes";
       
     }
 
     public static function selectByID(){
-        return  "SELECT * from estudiante where codigo=?";
+        return  "SELECT * from estudiantes where codigo=?";
     }
 
     public static function insertInto(){
-        return "INSERT INTO estudiante 
+        return "INSERT INTO estudiantes 
         (codigo, nombre, email, programa) 
         VALUES (?, ?, ?, ?)";
     }
 
     public static function update(){
-      return "UPDATE estudiante
+      return "UPDATE estudiantes
       SET nombre = ?, 
       email = ?, 
       programa = ?
@@ -27,6 +27,6 @@ class SqlEstudiante{
     }
 
     public static function delete(){
-        return "DELETE FROM estudiante WHERE codigo = ?";
+        return "DELETE FROM estudiantes WHERE codigo = ?";
     }
 }

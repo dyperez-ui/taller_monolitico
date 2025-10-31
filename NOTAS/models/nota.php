@@ -1,8 +1,9 @@
 <?php
 namespace App\Models;
 
-require __DIR__ . "/sql_models/sql-nota.php";
-require __DIR__ . "/databases/notas-DB.php";
+require __DIR__ . "/sql-model/sql_nota.php";
+require __DIR__ . "/sql-model/model.php";
+require __DIR__ . "/databases/notas-db.php";
 
 use App\Models\SQLModels\Sql_nota;
 use App\Models\Databases\NotasDB;

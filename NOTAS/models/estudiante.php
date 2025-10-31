@@ -1,9 +1,9 @@
 <?php
 namespace App\Models;
 
-require __DIR__ . "/sql_models/sql-Estudiante.php";
-require __DIR__ . "/sql_models/model.php";
-require __DIR__ . "/databases/notas-DB.php";
+require __DIR__ . "/sql-model/sql_estudiante.php";
+require __DIR__ . "/sql-model/model.php";
+require __DIR__ . "/databases/notas-db.php";
 
 use App\Models\SQLModels\Model;
 use App\Models\SQLModels\SqlEstudiante;
@@ -106,7 +106,7 @@ public function __construct($codigo = null, $nombre = null, $email = null, $prog
         public function tieneNotas()
     {
         $db = new NotasDB();
-        $sql = "SELECT COUNT(*) AS total FROM notas WHERE estudiante = ?";
+        $sql = "SELECT COUNT(*) AS total FROM notas WHERE estudiantes = ?";
         $result = $db->execSQL($sql, true, "s", $this->codigo);
 
         $row = $result->fetch_assoc();

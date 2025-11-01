@@ -32,18 +32,29 @@ class MateriasController
         return $materia->insert();
     }
 
-    public function deleteMateria($request)
-    {
-        if (empty($request['codigo'])) {
-            return false;
-        }
-
-        $materia = new Materia($request['codigo']);
-
- 
-
-        return $materia->delete();
+public function deleteMateria($request)
+{
+    if (empty($request['codigo'])) {
+        return false;
     }
+
+    $materia = new Materia($request['codigo']);
+    
+    // ✅ CAPTURAR el objeto que retorna find()
+    $materiaEncontrada = $materia->find();
+    
+    if (!$materiaEncontrada) {
+        return false; // No existe
+    }
+    
+    // ✅ Usar el objeto CON DATOS COMPLETOS para las validaciones
+    if ($materiaEncontrada->tieneNotas()) {
+        return "tiene_notas";
+    }
+
+    // ✅ Eliminar usando el objeto con datos completos
+    return $materiaEncontrada->delete();
+}
 
     public function updateMateria($request)
     {
@@ -64,4 +75,11 @@ class MateriasController
 
         return $materia->update();
     }
+    public function queryMateriaPorCodigo($codigo)
+    {
+        $materiaModel = new Materia();
+        return $materiaModel->BuscarPorCodigo($codigo);
+    }
+
 }
+

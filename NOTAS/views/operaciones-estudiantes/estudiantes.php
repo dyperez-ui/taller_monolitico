@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Lista de estudiantes</h1>
     <a href="estudiante_form.php">Crear nuevo</a>
     <a href="../../index.php">Volver</a>
+    <a href="consultar-estudiante.php"> Buscar estudiante por su codigo</a>
 
     <table >
         <thead>

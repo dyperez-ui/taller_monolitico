@@ -29,4 +29,9 @@ class SqlEstudiante{
     public static function delete(){
         return "DELETE FROM estudiantes WHERE codigo = ?";
     }
+
+      public static function seleccionPorCodigo()
+    {
+        return "SELECT * FROM estudiantes WHERE codigo = ?";
+    }
 }

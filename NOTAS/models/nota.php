@@ -15,6 +15,9 @@ class Nota
     public $cod_materia;
     public $actividad;
     public $nota;
+    // Agregar las propiedades que faltan
+    public $estudiante;
+    public $materia;
 
     public function __construct($id = null, $cod_estudiante = null, $cod_materia = null, $actividad = null, $nota = null)
     {
@@ -23,6 +26,9 @@ class Nota
         $this->cod_materia = $cod_materia;
         $this->actividad = $actividad;
         $this->nota = $nota;
+        // Inicializar las nuevas propiedades
+        $this->estudiante = $cod_estudiante;
+        $this->materia = $cod_materia;
     }
 
     public function all()
@@ -57,7 +63,7 @@ class Nota
         $db = new NotasDB();
         $sql = Sql_nota::insertInto();
 
-        // ✅ Orden correcto: materia, estudiante, actividad, nota
+      
         $result = $db->execSQL(
             $sql,
             false,
@@ -74,9 +80,9 @@ class Nota
 
     public function update()
     {
-        $db = new NotasDB();
-        // ✅ Cambiado: Solo actualiza la nota, no la actividad
+        
         $sql = "UPDATE notas SET nota = ? WHERE id = ?";
+        $db = new NotasDB();
         $result = $db->execSQL($sql, false, "di", $this->nota, $this->id);
         $db->close();
         return $result;
@@ -99,5 +105,33 @@ class Nota
         $row = $result->fetch_assoc();
         $db->close();
         return $row['total'] > 0;
+    }
+  
+    public function BuscarPorEstudiante($codigo)
+    {
+        $sql = "SELECT * FROM notas WHERE estudiante = ?";
+        $db = new NotasDB();
+        $result = $db->execSQL($sql, true, "s", $codigo);
+
+        $notas = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $notas[] = new Nota(
+                    $row['id'],
+                    $row['estudiante'],
+                    $row['materia'],
+                    $row['actividad'],
+                    $row['nota']
+                );
+            }
+        }
+
+        $db->close();
+        return $notas;
+    }
+
+    public function get($prop)
+    {
+        return $this->{$prop};
     }
 }

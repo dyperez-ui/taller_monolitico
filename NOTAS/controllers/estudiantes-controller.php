@@ -68,5 +68,9 @@ class EstudianteController
 
         return $estudiante->update();
     }
-
+    public function queryEstudianteByCodigo($codigo)
+{
+    $estudianteModel = new \App\Models\Estudiante();
+    return $estudianteModel->BuscarPorCodigo($codigo);
+}
 }

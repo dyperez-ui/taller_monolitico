@@ -18,6 +18,20 @@ h1 {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid #ddd;
+    text-align: center;
+}
+
+h2 {
+    color: #444;
+    margin: 30px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+h3 {
+    color: #555;
+    margin: 20px 0 10px 0;
+    font-size: 1.1em;
 }
 
 /* Enlaces */
@@ -43,7 +57,8 @@ form {
     padding: 20px;
     border-radius: 5px;
     max-width: 500px;
-    margin-top: 20px;
+    margin: 20px auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 form div {
@@ -59,6 +74,7 @@ label {
 
 input[type="text"],
 input[type="number"],
+input[type="email"],
 select {
     width: 100%;
     padding: 8px;
@@ -110,13 +126,85 @@ tr:hover {
 }
 
 /* Botones de acción en tabla */
-button img {
+.acciones {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.acciones button, .acciones a {
+    background: none;
+    border: none;
+    padding: 5px;
+    margin: 0;
+}
+
+.acciones img {
     vertical-align: middle;
 }
 
 /* Mensajes de error */
-h3 {
+.error {
     color: #dc3545;
+    margin: 20px 0;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Secciones para promedios */
+.section {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Promedios destacados */
+.promedio-destacado {
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* Mensajes informativos */
+.info-message {
+    color: #666;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+/* Resultados de búsqueda */
+#resultados {
+    margin: 20px 0;
+}
+
+#resultados p {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Formularios de búsqueda específicos */
+form[method="get"] {
+    text-align: center;
+    max-width: 600px;
+}
+
+form[method="get"] input[type="text"] {
+    width: 300px;
+    margin-right: 10px;
+}
+
+/* Navegación */
+.navegacion {
+    text-align: center;
     margin: 20px 0;
 }
 
@@ -132,5 +220,20 @@ h3 {
     
     th, td {
         padding: 8px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+    
+    form[method="get"] input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .acciones {
+        flex-direction: column;
+        align-items: center;
     }
 }

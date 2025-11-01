@@ -49,43 +49,6 @@ $conexion->close();
         <?php if (!empty($id)): ?>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
         <?php endif; ?>
-
-        <div>
-            <label for="cod_estudiante">Estudiante:</label>
-            <select name="cod_estudiante" id="cod_estudiante" required>
-                <option value="">Seleccione un estudiante</option>
-                <?php
-                if ($resEst->num_rows > 0) {
-                    while ($e = $resEst->fetch_assoc()) {
-                        $selected = ($nota && $nota["estudiante"] == $e["codigo"]) ? "selected" : "";
-                        echo "<option value='{$e['codigo']}' $selected>{$e['nombre']}</option>";
-                    }
-                }
-                ?>
-            </select>
-        </div>
-
-        <div>
-            <label for="cod_materia">Materia:</label>
-            <select name="cod_materia" id="cod_materia" required>
-                <option value="">Seleccione una materia</option>
-                <?php
-                if ($resMat->num_rows > 0) {
-                    while ($m = $resMat->fetch_assoc()) {
-                        $selected = ($nota && $nota["materia"] == $m["codigo"]) ? "selected" : "";
-                        echo "<option value='{$m['codigo']}' $selected>{$m['nombre']}</option>";
-                    }
-                }
-                ?>
-            </select>
-        </div>
-
-        <div>
-            <label for="actividad">Actividad:</label>
-            <input type="text" name="actividad" id="actividad"
-                   value="<?php echo $nota["actividad"] ?? "" ?>" required>
-        </div>
-
         <div>
             <label for="nota">Nota:</label>
             <input type="number" step="0.1" min="0" max="5" name="nota" id="nota"
@@ -97,4 +60,6 @@ $conexion->close();
         </div>
     </form>
 </body>
+
+<!-- honestamente esto fue una medida de salvarla porque no quiso funcionar antes -->
 </html>

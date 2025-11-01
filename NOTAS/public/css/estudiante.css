@@ -93,6 +93,7 @@ label {
 
 input[type="text"],
 input[type="email"],
+input[type="number"],
 select {
     width: 100%;
     padding: 8px 12px;
@@ -103,6 +104,7 @@ select {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="number"]:focus,
 select:focus {
     outline: none;
     border-color: #0066cc;
@@ -113,6 +115,7 @@ select:focus {
 .acciones {
     display: flex;
     gap: 5px;
+    justify-content: center;
 }
 
 .acciones button, 
@@ -143,5 +146,63 @@ h1 {
     margin-bottom: 20px;
     border-bottom: 2px solid #0066cc;
     padding-bottom: 10px;
+    text-align: center;
 }
 
+/* ===== RESULTADOS DE BÚSQUEDA ===== */
+#resultados {
+    margin: 20px 0;
+}
+
+#resultados p {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ===== FORMULARIOS DE BÚSQUEDA ===== */
+form[method="get"] {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form[method="get"] input[type="text"] {
+    width: 300px;
+    margin-right: 10px;
+}
+
+/* ===== NAVEGACIÓN ===== */
+.navegacion {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    form[method="get"] input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .acciones {
+        flex-direction: column;
+        align-items: center;
+    }
+}

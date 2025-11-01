@@ -61,4 +61,88 @@ class NotasController
         $nota = new Nota($request['id']);
         return $nota->delete();
     }
+
+    // Obtener materias de un estudiante con sus promedios
+    public function getMateriasConPromedio($estudiante_id) {
+        $todas_notas = $this->queryAllNotas();
+        
+        // Filtrar notas del estudiante
+        $notas_estudiante = array_filter($todas_notas, function($nota) use ($estudiante_id) {
+            return $nota->estudiante == $estudiante_id;
+        });
+        
+        // Agrupar por materia y calcular promedios
+        $materias = [];
+        foreach ($notas_estudiante as $nota) {
+            $materia_codigo = $nota->materia;
+            $materia_nombre = $nota->materia_nombre ?? $materia_codigo;
+            
+            if (!isset($materias[$materia_codigo])) {
+                $materias[$materia_codigo] = [
+                    'codigo' => $materia_codigo,
+                    'nombre' => $materia_nombre,
+                    'notas' => []
+                ];
+            }
+            $materias[$materia_codigo]['notas'][] = $nota->nota;
+        }
+        
+        // Calcular promedios
+        $resultado = [];
+        foreach ($materias as $materia) {
+            $promedio = round(array_sum($materia['notas']) / count($materia['notas']), 2);
+            $resultado[] = [
+                'codigo' => $materia['codigo'],
+                'nombre' => $materia['nombre'],
+                'promedio' => $promedio
+            ];
+        }
+        
+        return $resultado;
+    }
+
+    // Obtener estudiantes de una materia con sus promedios
+    public function getEstudiantesConPromedio($materia_id) {
+        $todas_notas = $this->queryAllNotas();
+        
+        // Filtrar notas de la materia
+        $notas_materia = array_filter($todas_notas, function($nota) use ($materia_id) {
+            return $nota->materia == $materia_id;
+        });
+        
+        // Agrupar por estudiante y calcular promedios
+        $estudiantes = [];
+        foreach ($notas_materia as $nota) {
+            $estudiante_codigo = $nota->estudiante;
+            $estudiante_nombre = $nota->estudiante_nombre ?? $estudiante_codigo;
+            
+            if (!isset($estudiantes[$estudiante_codigo])) {
+                $estudiantes[$estudiante_codigo] = [
+                    'codigo' => $estudiante_codigo,
+                    'nombre' => $estudiante_nombre,
+                    'notas' => []
+                ];
+            }
+            $estudiantes[$estudiante_codigo]['notas'][] = $nota->nota;
+        }
+        
+        // Calcular promedios
+        $resultado = [];
+        foreach ($estudiantes as $estudiante) {
+            $promedio = round(array_sum($estudiante['notas']) / count($estudiante['notas']), 2);
+            $resultado[] = [
+                'codigo' => $estudiante['codigo'],
+                'nombre' => $estudiante['nombre'],
+                'promedio' => $promedio
+            ];
+        }
+        
+        return $resultado;
+    }
+    public function queryNotasByEstudiante($codigo)
+{
+    $notaModel = new Nota();
+    return $notaModel->BuscarPorEstudiante($codigo);
+}
+
 }

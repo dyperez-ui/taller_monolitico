@@ -24,10 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
 </head>
 <body>
-    <h1>Lista de notas</h1>
 
+<h1>Lista de Notas</h1>
+
+
+<div>
+    <a href="promedio-notas.php">Ver Promedios</a>
     <a href="notas-form.php">Crear nueva nota</a>
     <a href="../../index.php">Volver</a>
+    <a href="consultar-nota.php">Consultar nota</a>
 
     <table border="1" cellpadding="5">
         <thead>
@@ -45,16 +50,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php foreach ($notas as $n) : ?>
                     <tr>
                         <td><?= $n->id ?></td>
-                        <td><?= $n->cod_materia ?></td>  <!-- Esto muestra el NOMBRE de la materia -->
-                        <td><?= $n->cod_estudiante ?></td> <!-- Esto muestra el NOMBRE del estudiante -->
-                        <td><?= $n->actividad ?? '—' ?></td> <!-- Ahora muestra la actividad real -->
+                        <td><?= $n->cod_materia ?></td>  
+                        <td><?= $n->cod_estudiante ?></td> 
+                        <td><?= $n->actividad ?? '—' ?></td> 
                         <td><?= $n->nota ?></td>
                         <td>
                             <button onclick="onClickBorrar(<?= $n->id ?>)">
                                 <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='30px'>
                             </button>
-                            <a href="notas-form.php?id=<?= $n->id ?>">
+                            <a href="modificarSoloNota.php?   id=<?= $n->id ?>">
                                 <img src='../../public/imagenes/modificar.svg' alt='Modificar' width='30px'>
+                                <!-- En la parte de los botones, agrega esto: -->
+                                <a href="promedio-notas.php?id=<?= $n->id ?>"> 
+                                <img src='../../public/imagenes/promedio.svg' alt='Promedio' width='30px'>
                             </a>
                         </td>
                     </tr>

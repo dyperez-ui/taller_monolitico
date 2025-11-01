@@ -38,4 +38,13 @@ class Sql_materia
     {
         return "SELECT COUNT(*) AS total FROM notas WHERE materia = ?";
     }
+
+    public static function tieneEstudiantes()
+{
+    return "SELECT COUNT(*) AS total FROM estudiantes_materias WHERE materia = ?";
+}
+  public static function seleccionPorCodigo()
+    {
+        return "SELECT * FROM materias WHERE codigo = ?";
+    }
 }

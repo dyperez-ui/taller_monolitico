@@ -3,22 +3,20 @@ $id = empty($_GET["id"]) ? "" : $_GET["id"];
 $titulo = empty($id) ? "Crear nota" : "Modificar nota";
 $action = empty($id) ? "guardar-nota.php" : "modificar-nota.php";
 
-// Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "notas_app");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Consulta estudiantes
+
 $sqlEst = "SELECT codigo, nombre FROM estudiantes";
 $resEst = $conexion->query($sqlEst);
 
-// Consulta materias
 $sqlMat = "SELECT codigo, nombre FROM materias";
 $resMat = $conexion->query($sqlMat);
 
-// Si hay id, obtener datos de la nota
+
 $nota = null;
 if (!empty($id)) {
     $stmt = $conexion->prepare("SELECT * FROM notas WHERE id = ?");

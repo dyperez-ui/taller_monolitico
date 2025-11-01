@@ -1,4 +1,4 @@
-/* ===== ESTILOS BÁSICOS ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body {
     padding: 20px;
 }
 
-/* ===== ENLACES Y BOTONES ===== */
+
 a {
     color: #0066cc;
     text-decoration: none;
@@ -71,7 +71,7 @@ tr:hover {
     background-color: #f0f0f0;
 }
 
-/* ===== FORMULARIOS ===== */
+
 form {
     background-color: white;
     padding: 20px;
@@ -111,7 +111,6 @@ select:focus {
     box-shadow: 0 0 5px rgba(0,102,204,0.3);
 }
 
-/* ===== BOTONES DE ACCIÓN ===== */
 .acciones {
     display: flex;
     gap: 5px;
@@ -130,7 +129,7 @@ select:focus {
     vertical-align: middle;
 }
 
-/* ===== MENSAJES DE ERROR ===== */
+
 .error {
     background-color: #ffebee;
     border: 1px solid #f44336;
@@ -140,7 +139,7 @@ select:focus {
     margin: 10px 0;
 }
 
-/* ===== TÍTULOS ===== */
+
 h1 {
     color: #333;
     margin-bottom: 20px;
@@ -149,7 +148,7 @@ h1 {
     text-align: center;
 }
 
-/* ===== RESULTADOS DE BÚSQUEDA ===== */
+
 #resultados {
     margin: 20px 0;
 }
@@ -163,7 +162,7 @@ h1 {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* ===== FORMULARIOS DE BÚSQUEDA ===== */
+
 form[method="get"] {
     text-align: center;
     margin-left: auto;
@@ -175,34 +174,9 @@ form[method="get"] input[type="text"] {
     margin-right: 10px;
 }
 
-/* ===== NAVEGACIÓN ===== */
+
 .navegacion {
     text-align: center;
     margin: 20px 0;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    table {
-        font-size: 14px;
-    }
-    
-    th, td {
-        padding: 8px;
-    }
-    
-    form[method="get"] input[type="text"] {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .acciones {
-        flex-direction: column;
-        align-items: center;
-    }
-}

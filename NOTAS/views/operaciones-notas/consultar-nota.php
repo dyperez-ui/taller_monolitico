@@ -8,8 +8,7 @@
 </head>
 <body>
     <h1>Buscar Notas por Estudiante</h1>
-    
-    <!-- Formulario con GET (correcto) -->
+
     <form method="get">
         <input type="text" name="codigo" placeholder="Ingresa el código del estudiante" 
                value="<?php echo isset($_GET['codigo']) ? htmlspecialchars($_GET['codigo']) : ''; ?>">
@@ -21,7 +20,7 @@
         require __DIR__ . '/../../controllers/nota-controller.php';
         use App\Controllers\NotasController;
 
-        // CAMBIO: Usar $_GET en lugar de $_POST
+
         if (isset($_GET['codigo']) && !empty($_GET['codigo'])) {
             $codigo = $_GET['codigo'];
 

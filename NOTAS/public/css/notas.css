@@ -1,4 +1,4 @@
-/* Estilos básicos reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Encabezados */
+
 h1 {
     color: #333;
     margin-bottom: 20px;
@@ -34,7 +34,7 @@ h3 {
     font-size: 1.1em;
 }
 
-/* Enlaces */
+
 a {
     color: #007bff;
     text-decoration: none;
@@ -51,7 +51,7 @@ a:hover {
     background-color: #f8f9fa;
 }
 
-/* Formularios */
+
 form {
     background: white;
     padding: 20px;
@@ -125,7 +125,7 @@ tr:hover {
     background-color: #e9ecef;
 }
 
-/* Botones de acción en tabla */
+
 .acciones {
     display: flex;
     gap: 5px;
@@ -143,7 +143,6 @@ tr:hover {
     vertical-align: middle;
 }
 
-/* Mensajes de error */
 .error {
     color: #dc3545;
     margin: 20px 0;
@@ -162,7 +161,7 @@ tr:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* Promedios destacados */
+
 .promedio-destacado {
     font-weight: bold;
     color: #28a745;
@@ -170,14 +169,13 @@ tr:hover {
     font-size: 1.2em;
 }
 
-/* Mensajes informativos */
 .info-message {
     color: #666;
     margin: 10px 0;
     font-style: italic;
 }
 
-/* Resultados de búsqueda */
+
 #resultados {
     margin: 20px 0;
 }
@@ -191,7 +189,7 @@ tr:hover {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Formularios de búsqueda específicos */
+
 form[method="get"] {
     text-align: center;
     max-width: 600px;
@@ -202,38 +200,8 @@ form[method="get"] input[type="text"] {
     margin-right: 10px;
 }
 
-/* Navegación */
+
 .navegacion {
     text-align: center;
     margin: 20px 0;
-}
-
-/* Responsive básico */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    table {
-        font-size: 14px;
-    }
-    
-    th, td {
-        padding: 8px;
-    }
-    
-    .section {
-        padding: 15px;
-    }
-    
-    form[method="get"] input[type="text"] {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .acciones {
-        flex-direction: column;
-        align-items: center;
-    }
 }

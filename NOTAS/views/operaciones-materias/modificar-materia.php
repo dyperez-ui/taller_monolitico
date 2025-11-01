@@ -3,15 +3,15 @@ require __DIR__ . "/../../controllers/materia-controller.php";
 
 use App\controllers\MateriasController;
 
-// Verifica que la solicitud venga del formulario (POST)
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $materiaController = new MateriasController();
 
-    // Ejecuta la actualización a través del controlador
+    
     $resultado = $materiaController->updateMateria($_POST);
 
     if ($resultado === true) {
-        // ✅ Redirige correctamente a la lista
+      
         header("Location: materias.php");
         exit;
     } elseif ($resultado === "notas") {

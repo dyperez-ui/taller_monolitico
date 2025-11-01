@@ -9,13 +9,13 @@
 <body>
     <h1>Buscar Estudiante</h1>
     
-    <!-- Formulario de búsqueda -->
+ 
     <form method="get">
         <input type="text" name="codigo" placeholder="Ingresa el código del estudiante">
         <button type="submit">Buscar</button>
     </form>
 
-    <!-- Resultados de búsqueda -->
+
     <div id="resultados">
         <?php
         require __DIR__ . '/../../controllers/estudiantes-controller.php';

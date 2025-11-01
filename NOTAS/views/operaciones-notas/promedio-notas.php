@@ -20,13 +20,13 @@ $controller = new NotasController();
     <div>
         <h2>Estudiantes con sus promedios por materia</h2>
         <?php
-        // Usar solo las funciones del controlador, sin acceder a propiedades
+     
         $todas_notas = $controller->queryAllNotas();
         
-        // Obtener estudiantes únicos usando las funciones del controlador
+    
         $estudiantes_con_notas = [];
         foreach ($todas_notas as $nota) {
-            // Si es objeto, convertirlo a array para manejarlo fácilmente
+           
             if (is_object($nota)) {
                 $nota = (array)$nota;
             }

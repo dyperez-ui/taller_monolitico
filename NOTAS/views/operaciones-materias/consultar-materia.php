@@ -8,14 +8,14 @@
 <body>
     <h1>Buscar Materia</h1>
     
-    <!-- Formulario de búsqueda -->
+
     <form method="get">
         <input type="text" name="codigo" placeholder="Ingresa el código de la materia">
         <button type="submit">Buscar</button>
          <link rel="stylesheet" href="../../public/css/materia.css">
     </form>
 
-    <!-- Resultados de búsqueda -->
+
     <div id="resultados">
         <?php
         require __DIR__ . '/../../controllers/materia-controller.php';
@@ -56,7 +56,7 @@
         ?>
     </div>
 
-    <!-- Enlaces de navegación -->
+ 
     <div>
         <a href="materias.php">Volver a la lista</a>
         <a href="../../index.php">Menú principal</a>

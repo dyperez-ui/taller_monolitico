@@ -1,4 +1,4 @@
-/* ===== MENÚ SIMPLE Y BONITO ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@ h1 {
     font-size: 1.3rem;
 }
 
-/* Colores diferentes para cada botón */
+
 .btn-estudiantes { background: #3498db; }
 .btn-notas { background: #e74c3c; }
 .btn-materias { background: #27ae60; }
@@ -70,18 +70,4 @@ h1 {
 .btn-materias:hover { background: #219a52; }
 .btn-programas:hover { background: #d35400; }
 
-/* Responsive */
-@media (max-width: 480px) {
-    .menu-container {
-        padding: 30px 20px;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-    }
-    
-    .menu-btn {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-    }
-}
+

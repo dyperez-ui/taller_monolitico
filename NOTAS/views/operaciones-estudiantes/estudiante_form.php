@@ -3,14 +3,14 @@ $cod = empty($_GET["cod"]) ? "" : $_GET["cod"];
 $titulo = empty($cod) ? "Crear estudiante" : "Modificar estudiante";
 $action = empty($cod) ? "guardar-estudiante.php" : "modificar-estudiante.php";
 
-// Conexión a la base de datos
+
 $conexion = new mysqli("localhost", "root", "", "notas_app");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Consulta para obtener los programas
+
 $sql = "SELECT codigo, nombre FROM programas";
 $resultado = $conexion->query($sql);
 ?>

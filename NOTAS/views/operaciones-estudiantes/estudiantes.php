@@ -25,7 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Lista de estudiantes</title>
+    <link rel="stylesheet" href="../../public/css/estudiante.css">
+ 
 </head>
+
 <body>
     <h1>Lista de estudiantes</h1>
     <a href="estudiante_form.php">Crear nuevo</a>

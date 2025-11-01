@@ -34,6 +34,7 @@ if (!empty($id)) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $titulo; ?></title>
+       <link rel="stylesheet" href="../../public/css/notas.css">
 </head>
 <body>
     <h1><?php echo $titulo; ?></h1>

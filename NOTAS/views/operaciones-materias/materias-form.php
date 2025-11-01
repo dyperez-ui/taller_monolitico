@@ -21,6 +21,7 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Materia formulario</title>
+       <link rel="stylesheet" href="../../public/css/materia.css">
 </head>
 
 <body>

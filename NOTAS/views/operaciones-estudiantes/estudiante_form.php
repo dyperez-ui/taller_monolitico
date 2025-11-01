@@ -22,7 +22,7 @@ $resultado = $conexion->query($sql);
     <meta charset="UTF-8">
     <title>estudiante formulario</title>
 </head>
-
+<link rel="stylesheet" href="../../public/css/estudiante.css">
 <body>
     <h1><?php echo $titulo; ?></h1>
     <br>

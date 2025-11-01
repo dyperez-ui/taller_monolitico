@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Lista de notas</title>
+    <link rel="stylesheet" href="../../public/css/notas.css">
+   
 </head>
 <body>
     <h1>Lista de notas</h1>

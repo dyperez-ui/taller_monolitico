@@ -11,6 +11,7 @@ $materias = $controller->queryAllMaterias();
 <head>
     <meta charset="UTF-8">
     <title>Lista de materias</title>
+       <link rel="stylesheet" href="../../public/css/materia.css">
 </head>
 <body>
     <h1>Lista de materias</h1>

@@ -11,41 +11,43 @@
     <head>
         <meta charset="UTF-8">
         <title>Lista de programas</title>
-         <link rel="stylesheet" href="../../public/css/programa.css">
+        <link rel="stylesheet" href="../../public/css/style.css">
     </head>
     <body> 
         <h1>Lista de programas</h1>
-        <a href="../../index.php"></a>
-        <a href="programa-form.php">Crear programa</a>
+        <div class="acciones-superiores">
+        <a href="programa-form.php" class = "boton">Crear programa</a>
+        <a href="../../index.php" class = "boton">Volver</a>
+        </div>
         <table >
             <thead>
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-                foreach ($programa as $p) {
-                    echo '<tr>';
-                    echo '  <td>' . $p->get('codigo') . '</td>';
-                    echo '  <td>' . $p->get('nombre') . '</td>';
-                    echo '  <td>';
-                    echo '      <button onclick="onClickBorrar(' . $p->get('codigo') . ')">';
-                    echo '          <img src="../../public/res/borrar.svg" alt="Borrar" width="30px">';
-                    echo '      </button>';
-                    echo '  </td>';
-                    echo '  <td>';
-                    echo '      <button>';   
-                    echo '      <a href="programa-form.php?cod=' . $p->get('codigo') . '">';
-                    echo '          <img src="../../public/res/modificar.svg" alt="modificar" width="30px">';
-                    echo '      </a>';
-                    echo '      </button>';
-                    echo '  </td>';
-                    echo '</tr>';
-                }
-                ?>
-            </tbody>
+                <?php if (!empty($programa)) : ?>
+                    <?php foreach ($programa as $p): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($p->get('codigo')) ?></td>
+                            <td><?= htmlspecialchars($p->get('nombre')) ?></td>
+                            <td>
+                                <button onclick="onClickBorrar('<?= $p->get('codigo') ?>')">
+                                    <img src="../../public/imagenes/papelera.svg" alt="Borrar" width="30px">
+                                </button>
+                                <a href="programa-form.php?cod=<?= $p->get('codigo') ?>">
+                                    <img src="../../public/imagenes/modificar.svg" alt="Modificar" width="30px">
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr><td colspan="3" style="text-align:center;">No hay programas registrados.</td></tr>
+                <?php endif; ?>
+                </tbody>
+
         </table>
         
         <script src="../../public/js/programa.js"></script>

@@ -1,0 +1,268 @@
+/* ======== ESTILO GLOBAL ======== */
+body {
+    background-color: #f7f7f7;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ======== TÍTULO ======== */
+h1 {
+    color: #e3001b;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 40px 0 25px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== BOTONES SUPERIORES ======== */
+.acciones-superiores {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.boton {
+    display: inline-block;
+    background-color: #e3001b;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: #fff;
+    color: #e3001b;
+    border-color: #e3001b;
+    box-shadow: 0 4px 10px rgba(227, 0, 27, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ======== TABLA ======== */
+table {
+    width: 85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #e3001b;
+    color: white;
+    text-transform: uppercase;
+}
+
+thead th {
+    padding: 14px 10px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #fff4f5;
+}
+
+tbody td {
+    padding: 12px 10px;
+    text-align: left;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* ======== ICONOS DE ACCIÓN ======== */
+td .acciones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+td button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+td button:hover {
+    transform: scale(1.1);
+}
+
+.icono-accion {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e3001b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.icono-accion:hover {
+    background-color: #c40016;
+}
+
+.icono-accion img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) brightness(100%);
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 800px) {
+    table {
+        width: 95%;
+        font-size: 0.9rem;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        text-align: left;
+    }
+
+    tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #e3001b;
+    }
+}
+
+/* =========================
+   ESTILOS SOLO PARA FORMULARIOS
+   ========================= */
+.form-page {
+    background-color: #f9f9f9;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+/* Contenedor del formulario */
+.form-page .form-container {
+    max-width: 550px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 35px 45px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.form-page h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #e4002b;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+/* Botón volver */
+.form-page .acciones-superiores {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-page .acciones-superiores .boton {
+    background-color: #e4002b;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.form-page .acciones-superiores .boton:hover {
+    background-color: #c70024;
+    transform: scale(1.05);
+}
+
+/* Etiquetas e inputs */
+.form-page label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-page input,
+.form-page select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 18px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-page input:focus,
+.form-page select:focus {
+    border-color: #e4002b;
+    box-shadow: 0 0 5px rgba(228, 0, 43, 0.25);
+    outline: none;
+}
+
+/* Botón guardar */
+.form-page .form-boton {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-page button[type="submit"] {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 40px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-page button[type="submit"]:hover {
+    background-color: #c70024;
+    transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .form-page .form-container {
+        margin: 20px;
+        padding: 25px;
+    }
+}
+

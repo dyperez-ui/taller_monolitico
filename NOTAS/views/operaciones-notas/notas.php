@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Lista de notas</title>
-    <link rel="stylesheet" href="../../public/css/notas.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
    
 </head>
 <body>
@@ -29,11 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <div>
-    <a href="promedio-notas.php">Ver Promedios</a>
-    <a href="notas-form.php">Crear nueva nota</a>
-    <a href="../../index.php">Volver</a>
-    <a href="consultar-nota.php">Consultar nota</a>
-
+     <div class="acciones-superiores">
+    <a href="promedio-notas.php" class="boton">Ver Promedios</a>
+    <a href="notas-form.php" class="boton">Crear nueva nota</a>
+    <a href="../../index.php" class="boton">Volver</a>
+    <a href="consultar-nota.php" class="boton">Consultar nota</a>
+    </div>
     <table border="1" cellpadding="5">
         <thead>
             <tr>

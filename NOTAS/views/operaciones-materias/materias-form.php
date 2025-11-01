@@ -1,6 +1,6 @@
 <?php
 $cod = empty($_GET["cod"]) ? "" : $_GET["cod"];
-$titulo = empty($cod) ? "Crear meteria" : "Modificar materia";
+$titulo = empty($cod) ? "Crear Materia" : "Modificar Materia";
 $action = empty($cod) ? "guardar-materia.php" : "modificar-materia.php";
 
 // Conexión a la base de datos
@@ -20,49 +20,64 @@ $resultado = $conexion->query($sql);
 
 <head>
     <meta charset="UTF-8">
-    <title>Materia formulario</title>
-       <link rel="stylesheet" href="../../public/css/materia.css">
+    <title><?php echo $titulo; ?></title>
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
 <body>
-    <h1><?php echo $titulo; ?></h1>
-    <br>
-    <a href="materias.php">Volver</a>
-    <br>
-    <form action="<?php echo $action; ?>" method="post">
-            <?php
-        if (!empty($cod)) {
-            echo '<input type="hidden" name="codigo" value="' . $cod . '">';
-        } else {
-            echo '<div>
-                    <label for="codigo">Código:</label>
-                    <input type="text" name="codigo" id="codigo" required placeholder="Maximo 5 caracteres">
-                </div>';
-        }
-        ?>
-        
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre">
-        </div>
-        <div>
-            <label for="programa">Programa:</label>
-            <select name="programa" id="programa" required>
-                <option value="">Seleccione un programa</option>
-                <?php
-                if ($resultado->num_rows > 0) {
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo '<option value="' . $fila["codigo"] . '">' . $fila["nombre"] . '</option>';
-                    }
-                }
-                ?>
-            </select>
-        </div>
-        
-        <div>
-            <button type="submit">Guardar</button>
-        </div>
-    </form>
-</body>
 
+<div class="form-page"> <!-- 🔴 Este contenedor activa el diseño del formulario -->
+
+    <h1><?php echo strtoupper($titulo); ?></h1>
+
+    <!-- Botón Volver -->
+    <div class="acciones-superiores">
+        <a href="materias.php" class="boton">Volver</a>
+    </div>
+
+    <!-- Contenedor principal del formulario -->
+    <div class="form-container">
+        <form action="<?php echo $action; ?>" method="post" class="formulario">
+
+            <?php
+            if (!empty($cod)) {
+                echo '<input type="hidden" name="codigo" value="' . $cod . '">';
+            } else {
+                echo '
+                <div class="form-grupo">
+                    <label for="codigo">Código:</label>
+                    <input type="text" name="codigo" id="codigo" maxlength="5" required placeholder="Máximo 5 caracteres">
+                </div>';
+            }
+            ?>
+
+            <div class="form-grupo">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required placeholder="Ingrese el nombre de la materia">
+            </div>
+
+            <div class="form-grupo">
+                <label for="programa">Programa:</label>
+                <select name="programa" id="programa" required>
+                    <option value="">Seleccione un programa</option>
+                    <?php
+                    if ($resultado->num_rows > 0) {
+                        while ($fila = $resultado->fetch_assoc()) {
+                            echo '<option value="' . $fila["codigo"] . '">' . $fila["nombre"] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div class="form-boton">
+                <button type="submit" class="boton">Guardar</button>
+            </div>
+
+        </form>
+    </div>
+
+</div> <!-- 🔴 Cierra .form-page -->
+
+</body>
 </html>

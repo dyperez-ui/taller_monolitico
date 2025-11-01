@@ -36,14 +36,19 @@ $conexion->close();
 <head>
     <meta charset="UTF-8">
     <title><?php echo $titulo; ?></title>
-    <link rel="stylesheet" href="../../public/css/notas.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
+    
+    <div class="form-page"> 
     <h1><?php echo $titulo; ?></h1>
     <br>
-    <a href="notas.php">Volver</a>
-    <a href="../../index.php">Volver al Inicio</a>
-    <br><br>
+ <div class="acciones-superiores">
+    <a href="notas.php" class="boton">Volver</a>
+    <a href="../../index.php" class="boton">Volver al Inicio</a>
+    </div>
+    
+    <br>
 
     <form action="<?php echo $action; ?>" method="post">
         <?php if (!empty($id)): ?>
@@ -59,6 +64,7 @@ $conexion->close();
             <button type="submit">Guardar</button>
         </div>
     </form>
+    </div>
 </body>
 
 <!-- honestamente esto fue una medida de salvarla porque no quiso funcionar antes -->

@@ -10,14 +10,17 @@ $controller = new NotasController();
 <html>
 <head>
     <title>Promedios</title>
-        <link rel="stylesheet" href="../../public/css/notas.css">
+        <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
     <h1>Promedios de Notas</h1>
-    <a href="notas.php">Volver a Notas</a>
-    <a href="../../index.php">Volver al Inicio</a>
+     <div class="acciones-superiores">
+    <a href="notas.php" class="boton">Volver</a>
+    <a href="../../index.php" class="boton">Volver al Inicio</a>
+    </div>
+   
 
-    <div>
+    <div >
         <h2>Estudiantes con sus promedios por materia</h2>
         <?php
      
@@ -42,7 +45,7 @@ $controller = new NotasController();
             $materias_con_promedio = $controller->getMateriasConPromedio($codigo_est);
             
             if (!empty($materias_con_promedio)): ?>
-                <table border="1">
+                <table border="1" cellpadding="5">
                     <tr><th>Materia</th><th>Promedio</th></tr>
                     <?php foreach ($materias_con_promedio as $materia): ?>
                         <tr>

@@ -7,12 +7,17 @@
 </head>
 <body>
     <h1>Buscar Materia</h1>
-    
+
+    <div class="form-page">
+    <div class="acciones-superiores">
+        <a href="materias.php" class ="boton">Volver a la lista</a>
+        <a href="../../index.php" class="boton">Menú principal</a>
+    </div>
 
     <form method="get">
         <input type="text" name="codigo" placeholder="Ingresa el código de la materia">
         <button type="submit">Buscar</button>
-         <link rel="stylesheet" href="../../public/css/materia.css">
+         <link rel="stylesheet" href="../../public/css/style.css">
     </form>
 
 
@@ -43,8 +48,8 @@
                 echo '<td>' . $materia->get('nombre') . '</td>';
                 echo '<td>' . $materia->get('programa') . '</td>';
                 echo '<td>';
-                echo '  <button onclick="onClickBorrar(' . $materia->get('codigo') . ')"><img src="../../public/res/borrar.svg" class="icon"></button>';
-                echo '  <a href="materia-form.php?cod=' . $materia->get('codigo') . '"><img src="../../public/res/modificar.svg" class="icon" width="30px"></a>';
+                echo '  <button onclick="onClickBorrar(' . $materia->get('codigo') . ')"><img src="../../public/imagenes/papelera.svg" class="icon"></button>';
+                echo '  <a href="materias-form.php?cod=' . $materia->get('codigo') . '"><img src="../../public/imagenes/modificar.svg" class="icon" width="30px"></a>';
                 echo '</td>';
                 echo '</tr>';
                 echo '</tbody>';
@@ -55,12 +60,9 @@
         }
         ?>
     </div>
-
+        </div>
  
-    <div>
-        <a href="materias.php">Volver a la lista</a>
-        <a href="../../index.php">Menú principal</a>
-    </div>
+    
 
     <script src="../../public/js/materia.js"></script>
 </body>

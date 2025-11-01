@@ -34,21 +34,25 @@ $conexion->close();
 <head>
     <meta charset="UTF-8">
     <title><?php echo $titulo; ?></title>
-    <link rel="stylesheet" href="../../public/css/notas.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
     <h1><?php echo $titulo; ?></h1>
     <br>
-    <a href="notas.php">Volver</a>
-    <a href="../../index.php">Volver al Inicio</a>
+    <div class="acciones-superiores">
+    <a href="notas.php" class="boton">Volver</a>
+    <a href="../../index.php" class="boton">Volver al Inicio</a>
+    </div>
     <br><br>
 
+
+    <div class="form-page"> 
     <form action="<?php echo $action; ?>" method="post">
         <?php if (!empty($id)): ?>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
         <?php endif; ?>
 
-        <div>
+        <div >
             <label for="cod_estudiante">Estudiante:</label>
             <select name="cod_estudiante" id="cod_estudiante" required>
                 <option value="">Seleccione un estudiante</option>
@@ -94,5 +98,6 @@ $conexion->close();
             <button type="submit">Guardar</button>
         </div>
     </form>
+    </div>
 </body>
 </html>

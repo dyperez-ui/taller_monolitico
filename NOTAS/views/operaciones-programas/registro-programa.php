@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../controllers/ProgramaController.php';
+require __DIR__ . '/../../controllers/programa-controller.php';
 use App\Controllers\ProgramaController;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

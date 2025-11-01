@@ -1,38 +1,28 @@
 function onClickBorrar(codigo) {
-    // Preguntar antes de eliminar
-    if (!confirm("¿Estás seguro de que quieres eliminar esta materia?")) {
-        return; // El usuario canceló
+    if (!confirm("¿Seguro que deseas eliminar esta materia?")) {
+        return;
     }
 
-    // Enviar solicitud al servidor
-    fetch("borrar-materia.php", {
+    fetch("../../views/operaciones-materias/borrar-materia.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: "codigo=" + codigo
+        body: "codigo=" + encodeURIComponent(codigo),
     })
-    .then(function(response) {
-        return response.text();
-    })
-    .then(function(data) {
-        // Quitar espacios extras de la respuesta
-        var respuesta = data.trim();
-        
-        // Verificar qué respondió el servidor
-        if (respuesta === "ok") {
-            alert(" Materia eliminada correctamente");
-           
+    .then(response => response.text())
+    .then(data => {
+        if (data.trim() === "ok") {
+            alert("Materia eliminada correctamente.");
             location.reload();
-        } else if (respuesta === "tiene_notas") {
-            alert(" No se puede eliminar - tiene notas registradas");
+        } else if (data.trim() === "tiene_notas") {
+            alert("No se puede eliminar la materia porque tiene notas registradas.");
         } else {
-            alert(" Error al eliminar la materia");
+            alert("Error al eliminar la materia.");
         }
     })
-    .catch(function(error) {
-        // Si hay error de conexión
-        console.log("Error:", error);
-        alert("rror de conexión con el servidor");
+    .catch(err => {
+        console.error("Error al eliminar materia:", err);
+        alert("Error en el servidor al intentar eliminar la materia.");
     });
 }

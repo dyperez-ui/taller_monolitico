@@ -5,28 +5,26 @@ class SqlPrograma
 {
     public static function selectAll()
     {
-        return "SELECT * FROM programa";
+        return "SELECT * FROM programas";
     }
 
     public static function selectByCodigo()
     {
-        return "SELECT * FROM programa WHERE codigo = ?";
+        return "SELECT * FROM programas WHERE codigo = ?";
     }
 
     public static function insertInto()
     {
-        return "INSERT INTO programa (codigo, nombre) 
-        VALUES (?, ?)";
+        return "INSERT INTO programas (codigo, nombre) VALUES (?, ?)";
     }
 
     public static function update()
     {
-        return "UPDATE programa SET nombre = ? 
-        WHERE codigo = ?";
+        return "UPDATE programas SET nombre = ? WHERE codigo = ?";
     }
 
     public static function delete()
     {
-        return "DELETE FROM programa WHERE codigo = ?";
+        return "DELETE FROM programas WHERE codigo = ?";
     }
 }

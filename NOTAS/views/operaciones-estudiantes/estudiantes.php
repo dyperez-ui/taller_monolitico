@@ -25,17 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Lista de estudiantes</title>
-    <link rel="stylesheet" href="../../public/css/estudiante.css">
+     <link rel="stylesheet" href="../../public/css/style.css">
  
 </head>
 
 <body>
-    <h1>Lista de estudiantes</h1>
-    <a href="estudiante_form.php">Crear nuevo</a>
-    <a href="../../index.php">Volver</a>
-    <a href="consultar-estudiante.php"> Buscar estudiante por su codigo</a>
+    <h1>Lista de Estudiantes</h1>
 
-    <table >
+    <!-- Botones superiores -->
+    <div class="acciones-superiores">
+        <a href="estudiante_form.php" class="boton">Crear nuevo</a>
+        <a href="../../index.php" class="boton">Volver</a>
+    </div>
+
+    <!-- Tabla de estudiantes -->
+    <table>
         <thead>
             <tr>
                 <th>Código</th>
@@ -54,22 +58,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td><?= $e->get('email') ?></td>
                         <td><?= $e->get('programa') ?></td>
                         <td>
-                            <button onclick="onClickBorrar('<?= $e->get('codigo') ?>')">
-                                <img src="../../public/imagenes/papelera.svg" alt="Borrar" width="30px">
-                            </button>
-                            <button>
+                            <div class="acciones">
+                                <button onclick="onClickBorrar('<?= $e->get('codigo') ?>')">
+                                    <div class="icono-accion">
+                                        <img src='../../public/imagenes/papelera.svg' alt='Borrar'>
+                                    </div>
+                                </button>
                                 <a href="estudiante_form.php?cod=<?= $e->get('codigo') ?>">
-                                    <img src="../../public/imagenes/modificar.svg" alt="Modificar" width="30px">
+                                    <div class="icono-accion">
+                                        <img src='../../public/imagenes/modificar.svg' alt='Modificar'>
+                                    </div>
                                 </a>
-                            </button>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             <?php else : ?>
-                <tr><td colspan="5">No hay estudiantes registrados.</td></tr>
+                <tr><td colspan="5" style="text-align:center;">No hay estudiantes registrados.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>
+
     <script src="../../public/js/estudiante.js"></script>
 </body>
 </html>

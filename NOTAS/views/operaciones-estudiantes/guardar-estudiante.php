@@ -1,19 +1,18 @@
 <?php
 require __DIR__ . "/../../controllers/estudiantes-controller.php";
 
-
 use App\Controllers\EstudianteController;
-use App\Controllers\EstudiantesController;
-use App\Models\Estudiante;
 
-$contactosController = new EstudianteController();
+$estudiantesController = new EstudianteController();
 
 $result = empty($_POST["id"])
-    ? $contactosController->saveNewEstudiante($_POST)
-    : $contactosController->updateEstudiante($_POST);
+    ? $estudiantesController->saveNewEstudiante($_POST)
+    : $estudiantesController->updateEstudiante($_POST);
 
 if ($result) {
-    header("Location: ../estudiantes.php");
+ 
+    header("Location: estudiantes.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ if ($result) {
 <body>
     <h1>Error al guardar los datos</h1>
     <br>
-    <a href="../contactos.php">Volver a contactos</a>
+    <a href="estudiantes.php">Volver a estudiantes</a>
 </body>
 
 </html>

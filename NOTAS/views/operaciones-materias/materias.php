@@ -15,7 +15,7 @@ $materias = $controller->queryAllMaterias();
 <body>
     <h1>Lista de materias</h1>
     <a href="materia-form.php">Crear nueva materia</a>
-    <a href="../index.php">Volver</a>
+    <a href="../../index.php">Volver</a>
 
     <table>
         <thead>

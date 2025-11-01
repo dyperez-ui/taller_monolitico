@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <img src="../../public/imagenes/papelera.svg" alt="Borrar" width="30px">
                             </button>
                             <button>
-                                <a href="estudiante-form.php?cod=<?= $e->get('codigo') ?>">
+                                <a href="estudiante_form.php?cod=<?= $e->get('codigo') ?>">
                                     <img src="../../public/imagenes/modificar.svg" alt="Modificar" width="30px">
                                 </a>
                             </button>

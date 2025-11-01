@@ -1,7 +1,7 @@
 <?php
 $cod = empty($_GET["cod"]) ? "" : $_GET["cod"];
-$titulo = empty($cod) ? "Crear estudiante" : "Modificar estudiante";
-$action = empty($cod) ? "guardar-estudiante.php" : "modificar-estudiante.php";
+$titulo = empty($cod) ? "Crear meteria" : "Modificar materia";
+$action = empty($cod) ? "guardar-materia.php" : "modificar-materia.php";
 
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "notas_app");
@@ -20,13 +20,13 @@ $resultado = $conexion->query($sql);
 
 <head>
     <meta charset="UTF-8">
-    <title>estudiante formulario</title>
+    <title>Materia formulario</title>
 </head>
 
 <body>
     <h1><?php echo $titulo; ?></h1>
     <br>
-    <a href="estudiantes.php">Volver</a>
+    <a href="materias.php">Volver</a>
     <br>
     <form action="<?php echo $action; ?>" method="post">
             <?php
@@ -39,14 +39,10 @@ $resultado = $conexion->query($sql);
                 </div>';
         }
         ?>
+        
         <div>
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre">
-        </div>
-        
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email">
         </div>
         <div>
             <label for="programa">Programa:</label>

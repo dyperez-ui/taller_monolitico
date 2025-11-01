@@ -27,6 +27,8 @@ if (!empty($id)) {
     $nota = $stmt->get_result()->fetch_assoc();
     $stmt->close();
 }
+
+$conexion->close();
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@ if (!empty($id)) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $titulo; ?></title>
-       <link rel="stylesheet" href="../../public/css/notas.css">
+    <link rel="stylesheet" href="../../public/css/notas.css">
 </head>
 <body>
     <h1><?php echo $titulo; ?></h1>
@@ -80,12 +82,12 @@ if (!empty($id)) {
         <div>
             <label for="actividad">Actividad:</label>
             <input type="text" name="actividad" id="actividad"
-                   value="<?php echo $nota["actividad"] ?? ""; ?>" required>
+                   value="<?php echo $nota["actividad"] ?? "" ?>" required>
         </div>
 
         <div>
             <label for="nota">Nota:</label>
-            <input type="number" step="0.1" name="nota" id="nota"
+            <input type="number" step="0.1" min="0" max="5" name="nota" id="nota"
                    value="<?php echo $nota["nota"] ?? ""; ?>" required>
         </div>
 

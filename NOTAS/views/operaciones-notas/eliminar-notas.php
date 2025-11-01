@@ -1,11 +1,11 @@
 <?php
 require __DIR__ . "/../../controllers/nota-controller.php";
 
-use App\controllers\NotasController;
+use App\Controllers\NotasController;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new NotasController();
-    $resultado = $controller->deleteNota($_POST);
+    $resultado = $controller->deleteNota($_POST['id']);
 
     if ($resultado === true) {
         echo "ok";

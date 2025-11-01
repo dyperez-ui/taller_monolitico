@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <button onclick="onClickBorrar(<?= $n->id ?>)">
                                 <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='30px'>
                             </button>
-                            <a href="nota-form.php?id=<?= $n->id ?>">
+                            <a href="notas-form.php?id=<?= $n->id ?>">
                                 <img src='../../public/imagenes/modificar.svg' alt='Modificar' width='30px'>
                             </a>
                         </td>

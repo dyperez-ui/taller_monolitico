@@ -7,7 +7,7 @@ header("Content-Type: text/plain");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['codigo'])) {
     $controller = new ProgramaController();
-    $result = $controller->deletePrograma($_POST['codigo']);
+    $result = $controller->BorrarPrograma($_POST['codigo']);
 
     if ($result === true) {
         echo "ok"; // borrado correcto

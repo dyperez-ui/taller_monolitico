@@ -9,7 +9,9 @@ class ProgramaController
 {
     public function queryAllProgramas()
     {
-       
+
+        $programa = new Programa();
+         return $programa->all();
     }
 
     public function saveNewPrograma($request)

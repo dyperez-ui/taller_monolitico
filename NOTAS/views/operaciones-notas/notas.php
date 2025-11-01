@@ -1,11 +1,18 @@
 <?php
-
 require __DIR__ . '/../../controllers/nota-controller.php';
+
 use App\Controllers\NotasController;
 
 $controller = new NotasController();
-$Notas = $controller->queryAllNotas(); 
+$notas = $controller->queryAllNotas();
 
+// Manejar eliminación vía POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'] ?? null;
+    $resultado = $controller->deleteNota($id);
+    echo $resultado ? "ok" : "error";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +23,11 @@ $Notas = $controller->queryAllNotas();
 </head>
 <body>
     <h1>Lista de notas</h1>
+
     <a href="notas-form.php">Crear nueva nota</a>
     <a href="../../index.php">Volver</a>
 
-    <table >
+    <table border="1" cellpadding="5">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,29 +39,27 @@ $Notas = $controller->queryAllNotas();
             </tr>
         </thead>
         <tbody>
-            <?php
-            foreach ($Notas as $n) {
-                echo '<tr>';
-                echo '  <td>' . $n->get('id') . '</td>';
-                echo '  <td>' . $n->get('materia') . '</td>';
-                echo '  <td>' . $n->get('estudiante') . '</td>';
-                echo '  <td>' . $n->get('actividad') . '</td>';
-                echo '  <td>' . $n->get('nota') . '</td>';
-                echo '  <td>';
-                echo '      <button onclick="onClickBorrar(' . $n->get('id') . ')">';
-                echo '          <img src="../../public/imagenes/papelera.svg" alt="Borrar" width="30px">';
-                echo '      </button>';
-                echo '  </td>';
-                echo '  <td>';
-                echo '      <button>';   
-                echo '      <a href="nota-form.php?cod=' . $n->get('id') . '">';
-                echo '          <img src="../../public/imagenes/modificar.svg" alt="modificar" width="30px">';
-                echo '      </a>';
-                echo '      </button>';
-                echo '  </td>';
-                echo '</tr>';
-            }
-            ?>
+            <?php if (!empty($notas)) : ?>
+                <?php foreach ($notas as $n) : ?>
+                    <tr>
+                        <td><?= $n->id ?></td>
+                        <td><?= $n->cod_materia ?></td>  <!-- Esto muestra el NOMBRE de la materia -->
+                        <td><?= $n->cod_estudiante ?></td> <!-- Esto muestra el NOMBRE del estudiante -->
+                        <td><?= $n->actividad ?? '—' ?></td> <!-- Ahora muestra la actividad real -->
+                        <td><?= $n->nota ?></td>
+                        <td>
+                            <button onclick="onClickBorrar(<?= $n->id ?>)">
+                                <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='30px'>
+                            </button>
+                            <a href="nota-form.php?id=<?= $n->id ?>">
+                                <img src='../../public/imagenes/modificar.svg' alt='Modificar' width='30px'>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr><td colspan="6">No hay notas registradas.</td></tr>
+            <?php endif; ?>
         </tbody>
     </table>
 

@@ -14,18 +14,23 @@ class NotasController
 
     public function NewNota($request)
     {
+        // Verificar que TODOS los campos estén presentes, incluyendo actividad
         if (
             empty($request['cod_estudiante']) ||
             empty($request['cod_materia']) ||
-            !isset($request['nota'])
+            empty($request['actividad']) ||  // ← AÑADIR ESTA VALIDACIÓN
+            !isset($request['nota']) || $request['nota'] === ''
         ) {
             return false;
         }
+
+        // Enviar los 5 parámetros en el orden correcto
         $nota = new Nota(
-            null,
-            $request['cod_estudiante'],
-            $request['cod_materia'],
-            $request['nota']
+            null,                       // id
+            $request['cod_estudiante'], // cod_estudiante
+            $request['cod_materia'],    // cod_materia  
+            $request['actividad'],      // actividad ← NUEVO PARÁMETRO
+            $request['nota']            // nota
         );
 
         return $nota->insert();
@@ -37,7 +42,13 @@ class NotasController
             return false;
         }
 
-        $nota = new Nota($request['id'], null, null, $request['nota']);
+        $nota = new Nota(
+            $request['id'], 
+            null, 
+            null, 
+            null, 
+            $request['nota']
+        );
         return $nota->update();
     }
 

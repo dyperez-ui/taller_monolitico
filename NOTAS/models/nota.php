@@ -13,13 +13,15 @@ class Nota
     public $id;
     public $cod_estudiante;
     public $cod_materia;
+    public $actividad;
     public $nota;
 
-    public function __construct($id = null, $cod_estudiante = null, $cod_materia = null, $nota = null)
+    public function __construct($id = null, $cod_estudiante = null, $cod_materia = null, $actividad = null, $nota = null)
     {
         $this->id = $id;
         $this->cod_estudiante = $cod_estudiante;
         $this->cod_materia = $cod_materia;
+        $this->actividad = $actividad;
         $this->nota = $nota;
     }
 
@@ -31,7 +33,13 @@ class Nota
         $notas = [];
 
         while ($row = $result->fetch_assoc()) {
-            $nota = new Nota($row['id'], $row['estudiante'], $row['materia'], $row['nota']);
+            $nota = new Nota(
+                $row['id'],
+                $row['estudiante'],  // Esto va a cod_estudiante
+                $row['materia'],     // Esto va a cod_materia
+                $row['actividad'],
+                $row['nota']
+            );
             array_push($notas, $nota);
         }
 
@@ -48,7 +56,18 @@ class Nota
 
         $db = new NotasDB();
         $sql = Sql_nota::insertInto();
-        $result = $db->execSQL($sql, false, "ssd", $this->cod_estudiante, $this->cod_materia, $this->nota);
+
+        // ✅ Orden correcto: materia, estudiante, actividad, nota
+        $result = $db->execSQL(
+            $sql,
+            false,
+            "sssd",
+            $this->cod_materia,
+            $this->cod_estudiante,
+            $this->actividad,
+            $this->nota
+        );
+
         $db->close();
         return $result;
     }
@@ -56,7 +75,8 @@ class Nota
     public function update()
     {
         $db = new NotasDB();
-        $sql = Sql_nota::update();
+        // ✅ Cambiado: Solo actualiza la nota, no la actividad
+        $sql = "UPDATE notas SET nota = ? WHERE id = ?";
         $result = $db->execSQL($sql, false, "di", $this->nota, $this->id);
         $db->close();
         return $result;

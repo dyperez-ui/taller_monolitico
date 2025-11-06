@@ -2,7 +2,7 @@
 namespace App\Models;
 
 require __DIR__ . "/sql-model/sql-programa.php";
-require __DIR__ . "/sql-model/model.php";
+require_once __DIR__ . "/sql-model/model.php";
 require __DIR__ . "/databases/notas-db.php";
 
 use App\Models\SQLModels\Model;

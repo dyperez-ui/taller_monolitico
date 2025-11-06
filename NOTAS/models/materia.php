@@ -2,8 +2,9 @@
 namespace App\Models;
 
 require __DIR__ . "/sql-model/sql_materia.php";
-require __DIR__ . "/databases/notas-DB.php";
-require __DIR__ . "/sql-model/model.php";
+require_once __DIR__ . "/databases/notas-db.php";
+require_once __DIR__ . "/sql-model/model.php";
+
 
 use App\Models\SQLModels\sql_materia;
 use App\Models\Databases\NotasDB;
@@ -47,26 +48,21 @@ class Materia extends Model
         $db->close();
         return $materias;
     }
-    public function find()
-    {
-        $sql =  Sql_materia::selectByCodigo();
-        $db = new NotasDB();
+  public function find()
+{
+    $sql = Sql_materia::selectByCodigo(); // ✅ corregido (S mayúscula)
+    $db = new NotasDB();
+    $result = $db->execSQL($sql, true, "s", $this->codigo);
 
-
-        $result = $db->execSQL($sql, true, "s", $this->codigo);
-
-        $materia = null;
-        if ($row = $result->fetch_assoc()) {
-            $materia = new Materia(
-                $row['codigo'],
-                $row['nombre'],
-                $row['programa']
-            );
-        }
-
-        $db->close();
-        return $materia;
+    $materia = null;
+    if ($row = $result->fetch_assoc()) {
+        $materia = new Materia($row['codigo'], $row['nombre'], $row['programa']);
     }
+
+    $db->close();
+    return $materia;
+}
+
 
     public function insert()
     {

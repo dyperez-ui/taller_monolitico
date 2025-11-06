@@ -30,6 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+
+<header>
+    <nav class="navbar">
+        <ul>
+            <a href="../operaciones-materias/materias.php" class="boton">Materias</a>
+            <a href="../operaciones-notas/notas.php" class="boton">Notas</a>
+            <a href="../operaciones-programas/programas.php" class="boton">Programas</a>
+        </ul>
+    </nav>
+</header>
+
     <h1>Lista de Estudiantes</h1>
 
     <!-- Botones superiores -->

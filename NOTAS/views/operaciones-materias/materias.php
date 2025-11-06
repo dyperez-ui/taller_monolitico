@@ -14,14 +14,24 @@ $materias = $controller->queryAllMaterias();
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
+    <header>
+    <nav class="navbar">
+        <ul>
+            <a href="../operaciones-estudiantes/estudiantes.php" class="boton">Estudiantes</a>
+            <a href="../operaciones-notas/notas.php" class="boton">Notas</a>
+            <a href="../operaciones-programas/programas.php" class="boton">Programas</a>
+        </ul>
+    </nav>
+</header>
+
 
     <h1>Lista de Materias</h1>
 
     <!-- Botones superiores -->
     <div class="acciones-superiores">
         <a href="materias-form.php" class="boton">Crear nueva materia</a>
-        <a href="../../index.php" class="boton">Volver</a>
         <a href="consultar-materia.php" class ="boton">Consultar materia</a>
+         <a href="../../index.php" class="boton">Volver</a>
     </div>
 
     <!-- Tabla de materias -->

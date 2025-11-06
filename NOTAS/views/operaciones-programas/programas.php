@@ -14,9 +14,31 @@
         <link rel="stylesheet" href="../../public/css/style.css">
     </head>
     <body> 
+ <header>
+    <nav class="navbar">
+        <ul>
+            <a href="../operaciones-estudiantes/estudiantes.php" class="boton">Estudiantes</a>
+            <a href="../operaciones-materias/materias.php" class="boton">Materias</a>
+            <a href="../operaciones-notas/notas.php" class="boton">Notas</a>
+           
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
         <h1>Lista de programas</h1>
         <div class="acciones-superiores">
         <a href="programa-form.php" class = "boton">Crear programa</a>
+        <a href="promedio-notas.php" class="boton">Materias por estudiante </a>
+        <a href="estudiantes-registrados.php"  class="boton">Estudiantes registradas</a>
+         <a href="estudiantes-por-materia.php"  class="boton">Estudiantes registrados por materia</a>
+        <a href="materias-registradas.php"  class="boton">Materias registradas</a>
         <a href="../../index.php" class = "boton">Volver</a>
         </div>
         <table >

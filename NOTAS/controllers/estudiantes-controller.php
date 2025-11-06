@@ -68,9 +68,24 @@ class EstudianteController
 
         return $estudiante->update();
     }
-    public function queryEstudianteByCodigo($codigo)
+    public function queryEstudiantePorCodigo($codigo)
 {
     $estudianteModel = new \App\Models\Estudiante();
     return $estudianteModel->BuscarPorCodigo($codigo);
 }
+
+public function queryEstudiantesPorPrograma($codigoPrograma)
+{
+    $model = new Estudiante();
+    $todos = $model->all();
+
+    $filtrados = [];
+    foreach ($todos as $e) {
+        if ($e->get('programa') == $codigoPrograma) {
+            $filtrados[] = $e;
+        }
+    }
+    return $filtrados;
+}
+
 }

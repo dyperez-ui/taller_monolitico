@@ -25,7 +25,7 @@
             $codigo = $_GET['codigo'];
 
             $controller = new EstudianteController();
-            $estudiante = $controller->queryEstudianteByCodigo($codigo);
+            $estudiante = $controller->queryEstudiantePorCodigo($codigo);
 
             if ($estudiante) {
                 echo '<table>';

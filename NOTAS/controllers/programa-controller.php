@@ -2,8 +2,11 @@
 namespace App\Controllers;
 
 require __DIR__ . "/../models/programa.php";
+require __DIR__ . '/../models/materia.php';
+    
 
 use App\Models\Programa;
+use App\Models\Materia;
 
 class ProgramaController
 {
@@ -60,4 +63,26 @@ class ProgramaController
 
         return $programa->update();
     }
+
+    public function getMateriasPorPrograma($codigoPrograma)
+{
+    
+    $materia = new Materia();
+    $sql = "SELECT * FROM materias WHERE programa = ?";
+    $db = new \App\Models\Databases\NotasDB();
+    $result = $db->execSQL($sql, true, "s", $codigoPrograma);
+
+    $materias = [];
+    while ($row = $result->fetch_assoc()) {
+        $materias[] = new Materia(
+            $row['codigo'],
+            $row['nombre'],
+            $row['programa']
+        );
+    }
+
+    $db->close();
+    return $materias;
+}
+
 }

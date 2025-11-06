@@ -1,28 +1,28 @@
-function onClickBorrar(codigo) {
-    if (!confirm("¿Seguro que deseas eliminar esta nota?")) {
-        return; // cancelado
-    }
+function onClickBorrarNota(id) {
+    if (!confirm("¿Seguro que deseas eliminar esta nota?")) return;
 
-    fetch("eliminar-materia.php", {
+    fetch("../../views/operaciones-notas/borrar-nota.php", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: "codigo=" + encodeURIComponent(codigo),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "id=" + encodeURIComponent(id),
     })
-    .then(response => response.text())
+    .then(res => res.text())
     .then(data => {
+        console.log("Respuesta del servidor:", data);
+
         if (data.trim() === "ok") {
-            alert("Materia eliminada correctamente.");
+            alert("✅ Nota eliminada correctamente.");
             location.reload();
-        } else if (data.trim() === "tiene_notas") {
-            alert("No se puede eliminar la materia porque tiene notas registradas.");
+        } else if (data.trim() === "not_found") {
+            alert("⚠️ No se encontró la nota en la base de datos.");
+        } else if (data.trim() === "invalid_request") {
+            alert("⚠️ Solicitud inválida.");
         } else {
-            alert("Error al eliminar la materia.");
+            alert("❌ Error al eliminar la nota.");
         }
     })
     .catch(err => {
-        console.error("Error al eliminar materia:", err);
-        alert("Error en el servidor al intentar eliminar la materia.");
+        console.error("Error:", err);
+        alert("Error de conexión con el servidor.");
     });
 }

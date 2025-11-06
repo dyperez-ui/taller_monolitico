@@ -1,22 +1,24 @@
 <?php
 require __DIR__ . "/../../controllers/materia-controller.php";
-
-use App\controllers\MateriasController;
+use App\Controllers\MateriasController;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new MateriasController();
-    $resultado = $controller->deleteMateria($_POST);
+    $codigo = $_POST['codigo'] ?? null;
+
+    $resultado = $controller->deleteMateria(['codigo' => $codigo]);
 
     if ($resultado === true) {
         echo "ok";
-    } elseif ($resultado === "notas") {
+    } elseif ($resultado === "tiene_notas") {
         echo "tiene_notas";
+    } elseif ($resultado === "tiene_estudiantes") {
+        echo "tiene_estudiantes";
     } else {
         echo "error";
     }
     exit;
-} else {
-    echo "invalid_request";
-    exit;
 }
-?>
+
+echo "invalid_request";
+    

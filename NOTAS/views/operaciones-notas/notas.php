@@ -15,11 +15,11 @@ $notas = $controller->queryAllNotas();
 </head>
 <body>
 
-    <header>
+<header>
     <nav class="navbar">
         <ul>
             <a href="../operaciones-estudiantes/estudiantes.php" class="boton">Estudiantes</a>
-              <a href="../operaciones-materias/materias.php" class="boton">Materias</a>
+            <a href="../operaciones-materias/materias.php" class="boton">Materias</a>
             <a href="../operaciones-programas/programas.php" class="boton">Programas</a>
         </ul>
     </nav>
@@ -30,7 +30,7 @@ $notas = $controller->queryAllNotas();
 <div class="acciones-superiores">
     <a href="notas-form.php" class="boton">Nueva Nota</a>
     <a href="../../index.php" class="boton">Volver</a>
-    <a href="consultar-nota.php" class="boton">consultar nota</a>
+    <a href="consultar-nota.php" class="boton">Consultar Nota</a>
 </div>
 
 <table>
@@ -48,11 +48,11 @@ $notas = $controller->queryAllNotas();
         <?php if (!empty($notas)): ?>
             <?php foreach ($notas as $n): ?>
                 <tr>
-                    <td><?= htmlspecialchars($n->id) ?></td>
-                    <td><?= htmlspecialchars($n->cod_materia) ?></td>
-                    <td><?= htmlspecialchars($n->cod_estudiante) ?></td>
-                    <td><?= htmlspecialchars($n->actividad ?? '—') ?></td>
-                    <td><?= htmlspecialchars($n->nota) ?></td>
+                    <td><?= $n->id ?></td>
+                    <td><?= $n->cod_materia ?></td>
+                    <td><?= $n->cod_estudiante ?></td>
+                    <td><?= $n->actividad ?? '—' ?></td>
+                    <td><?= $n->nota ?></td>
                     <td class="acciones">
                         <button type="button" onclick="onClickBorrarNota(<?= (int)$n->id ?>)">
                             <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='25'>
@@ -64,7 +64,7 @@ $notas = $controller->queryAllNotas();
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <tr><td >No hay notas registradas.</td></tr>
+            <tr><td colspan="6">No hay notas registradas.</td></tr>
         <?php endif; ?>
     </tbody>
 </table>

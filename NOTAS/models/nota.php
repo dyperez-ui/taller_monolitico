@@ -86,14 +86,16 @@ class Nota
     }
 
     public function delete()
-    {
-        // eliminar por id
-        $db = new NotasDB();
-        $sql = "DELETE FROM notas WHERE id = ?";
-        $result = $db->execSQL($sql, false, "i", $this->id);
-        $db->close();
-        return $result;
-    }
+{
+    $db = new NotasDB();
+    $sql = Sql_nota::delete();
+
+    $prepare = $db->execSQL($sql, false, "i", $this->id);
+    $db->close();
+
+    return $prepare; // true si se ejecuta bien
+}
+
 
     public function existeNota()
     {

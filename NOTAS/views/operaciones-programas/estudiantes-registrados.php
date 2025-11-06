@@ -28,10 +28,10 @@ $programas = $programaController->queryAllProgramas();
     <a href="../../index.php" class="boton">Volver al Inicio</a>
 </div>
 
-<?php if (!empty($programas)): ?>
-    <?php foreach ($programas as $programa): ?>
-        <section style="margin-bottom: 40px;">
-            <h2>Programa: <?= htmlspecialchars($programa->get('nombre')) ?> (<?= htmlspecialchars($programa->get('codigo')) ?>)</h2>
+<div class="form-container">
+    <?php if (!empty($programas)): ?>
+        <?php foreach ($programas as $programa): ?>
+            <h2>Programa: <?= $programa->get('nombre') ?> (<?= $programa->get('codigo') ?>)</h2>
 
             <?php
             // Obtener estudiantes de este programa
@@ -39,7 +39,7 @@ $programas = $programaController->queryAllProgramas();
             ?>
 
             <?php if (!empty($estudiantes)): ?>
-                <table border="1" cellpadding="5" cellspacing="0" style="width: 80%; margin: 10px auto;">
+                <table class="tabla">
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -50,21 +50,22 @@ $programas = $programaController->queryAllProgramas();
                     <tbody>
                         <?php foreach ($estudiantes as $e): ?>
                             <tr>
-                                <td><?= htmlspecialchars($e->get('codigo')) ?></td>
-                                <td><?= htmlspecialchars($e->get('nombre')) ?></td>
-                                <td><?= htmlspecialchars($e->get('email')) ?></td>
+                                <td><?= $e->get('codigo') ?></td>
+                                <td><?= $e->get('nombre') ?></td>
+                                <td><?= $e->get('email') ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php else: ?>
-                <p style="text-align:center;">No hay estudiantes registrados en este programa.</p>
+                <p>No hay estudiantes registrados en este programa.</p>
             <?php endif; ?>
-        </section>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p style="text-align:center;">No hay programas registrados en el sistema.</p>
-<?php endif; ?>
+            <br>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No hay programas registrados en el sistema.</p>
+    <?php endif; ?>
+</div>
 
 </body>
 </html>

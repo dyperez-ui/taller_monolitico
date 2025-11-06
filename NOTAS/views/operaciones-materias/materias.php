@@ -14,7 +14,8 @@ $materias = $controller->queryAllMaterias();
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
-    <header>
+
+<header>
     <nav class="navbar">
         <ul>
             <a href="../operaciones-estudiantes/estudiantes.php" class="boton">Estudiantes</a>
@@ -24,57 +25,47 @@ $materias = $controller->queryAllMaterias();
     </nav>
 </header>
 
+<h1>Lista de Materias</h1>
 
-    <h1>Lista de Materias</h1>
+<div class="acciones-superiores">
+    <a href="materias-form.php" class="boton">Crear Nueva Materia</a>
+    <a href="consultar-materia.php" class="boton">Consultar Materia</a>
+    <a href="../../index.php" class="boton">Volver</a>
+</div>
 
-    <!-- Botones superiores -->
-    <div class="acciones-superiores">
-        <a href="materias-form.php" class="boton">Crear nueva materia</a>
-        <a href="consultar-materia.php" class ="boton">Consultar materia</a>
-         <a href="../../index.php" class="boton">Volver</a>
-    </div>
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Programa</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($materias)): ?>
+            <?php foreach ($materias as $m): ?>
+                <tr>
+                    <td><?= $m->get('codigo') ?></td>
+                    <td><?= $m->get('nombre') ?></td>
+                    <td><?= $m->get('programa') ?></td>
+                    <td class="acciones">
+                        <button onclick="onClickBorrar('<?= $m->get('codigo') ?>')">
+                            <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='25'>
+                        </button>
+                        <a href="materias-form.php?cod=<?= $m->get('codigo') ?>">
+                            <img src='../../public/imagenes/modificar.svg' alt='Modificar' width='25'>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr><td colspan="4">No hay materias registradas.</td></tr>
+        <?php endif; ?>
+    </tbody>
+</table>
 
-    <!-- Tabla de materias -->
-    <table>
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nombre</th>
-                <th>Programa</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($materias)) : ?>
-                <?php foreach ($materias as $m): ?>
-                    <tr>
-                        <td><?= $m->get('codigo') ?></td>
-                        <td><?= $m->get('nombre') ?></td>
-                        <td><?= $m->get('programa') ?></td>
-                        <td>
-                            <div class="acciones">
-                                <!-- Botón eliminar -->
-                                <button onclick="onClickBorrar('<?= $m->get('codigo') ?>')">
-                                    <div class="icono-accion">
-                                        <img src='../../public/imagenes/papelera.svg' alt='Borrar'>
-                                    </div>
-                                </button>
-                                <!-- Botón modificar -->
-                                <a href="materias-form.php?cod=<?= $m->get('codigo') ?>">
-                                    <div class="icono-accion">
-                                        <img src='../../public/imagenes/modificar.svg' alt='Modificar'>
-                                    </div>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <tr><td colspan="4" style="text-align:center;">No hay materias registradas.</td></tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+<script src='../../public/js/materia.js'></script>
 
-    <script src='../../public/js/materia.js'></script>
 </body>
 </html>

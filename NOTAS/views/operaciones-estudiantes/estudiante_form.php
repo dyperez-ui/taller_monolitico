@@ -26,7 +26,7 @@ $resultado = $conexion->query($sql);
 
 <body>
 
-<div class="form-page"> <!-- 🔴 ESTE DIV ACTIVA LOS ESTILOS DEL FORMULARIO -->
+<div class="form-page"> 
 
     <h1><?php echo strtoupper($titulo); ?></h1>
 

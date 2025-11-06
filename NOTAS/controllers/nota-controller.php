@@ -58,15 +58,18 @@ class NotasController
      */
 public function deleteNota($request)
 {
-    $id = is_array($request) ? ($request['id'] ?? null) : $request;
-
-    if (empty($id) || !is_numeric($id)) {
+    // ✅ Validación segura
+    if (!isset($request['id']) || empty($request['id'])) {
         return false;
     }
 
-    $nota = new \App\Models\Nota((int)$id);
-    return $nota->delete();
+    $nota = new Nota($request['id']);
+    $resultado = $nota->delete();
+
+    // ✅ Asegurar retorno booleano real
+    return $resultado ? true : false;
 }
+
 
 
 

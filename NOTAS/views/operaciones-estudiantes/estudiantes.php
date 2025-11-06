@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tr>
                 <?php endforeach; ?>
             <?php else : ?>
-                <tr><td colspan="5" style="text-align:center;">No hay estudiantes registrados.</td></tr>
+                <tr><td colspan="5">No hay estudiantes registrados.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>

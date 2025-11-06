@@ -11,14 +11,14 @@ function onClickBorrarNota(id) {
         console.log("Respuesta del servidor:", data);
 
         if (data.trim() === "ok") {
-            alert("✅ Nota eliminada correctamente.");
+            alert("Nota eliminada correctamente.");
             location.reload();
         } else if (data.trim() === "not_found") {
-            alert("⚠️ No se encontró la nota en la base de datos.");
+            alert("No se encontró la nota en la base de datos.");
         } else if (data.trim() === "invalid_request") {
-            alert("⚠️ Solicitud inválida.");
+            alert("Solicitud inválida.");
         } else {
-            alert("❌ Error al eliminar la nota.");
+            alert(" Error al eliminar la nota.");
         }
     })
     .catch(err => {

@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="acciones-superiores">
         <a href="estudiante_form.php" class="boton">Crear nuevo</a>
         <a href="../../index.php" class="boton">Volver</a>
+        <a href="consultar-estudiante.php" class="boton">Consultar estudiante</a>
     </div>
 
     <!-- Tabla de estudiantes -->

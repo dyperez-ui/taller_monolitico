@@ -25,13 +25,6 @@
     </nav>
 </header>
 
-
-
-
-
-
-
-
         <h1>Lista de programas</h1>
         <div class="acciones-superiores">
         <a href="programa-form.php" class = "boton">Crear programa</a>

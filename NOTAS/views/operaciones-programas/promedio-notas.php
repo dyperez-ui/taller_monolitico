@@ -42,7 +42,7 @@ $todas_notas = $controller->queryAllNotas();
             foreach ($promediosEstudiantes as $estudiante => $info) {
                 $promedioGeneral = array_sum($info['notas']) / count($info['notas']);
                 echo "<div class='tabla-promedios'>";
-                echo "<h3>👩 Estudiante: $estudiante</h3>";
+                echo "<h3> Estudiante: $estudiante</h3>";
                 echo "<p>nota definitiva: " . number_format($promedioGeneral, 2) . "</p>";
                 echo "<table class='tabla'>";
                 echo "<thead><tr><th>Materia</th><th>Nota</th></tr></thead><tbody>";
@@ -57,35 +57,9 @@ $todas_notas = $controller->queryAllNotas();
         ?>
     </div>
 
-   
+
 </body>
 </html>
 
 
- <!-- <div class="form-container">
-        <h2>Promedios por Materia</h2>
 
-        <?php
-        $promediosMaterias = [];
-
-        foreach ($todas_notas as $n) {
-            $materia = $n->cod_materia;
-            $nota = $n->nota;
-            $promediosMaterias[$materia]['notas'][] = $nota;
-        }
-
-        if (empty($promediosMaterias)) {
-            echo "<p>No hay materias con notas registradas.</p>";
-        } else {
-            echo "<table class='tabla'>";
-            echo "<thead><tr><th>Materia</th><th>Promedio</th></tr></thead><tbody>";
-
-            foreach ($promediosMaterias as $materia => $info) {
-                $promedio = array_sum($info['notas']) / count($info['notas']);
-                echo "<tr><td>$materia</td><td>" . number_format($promedio, 2) . "</td></tr>";
-            }
-
-            echo "</tbody></table>";
-        }
-        ?>
-    </div>  -->

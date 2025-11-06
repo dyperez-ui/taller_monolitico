@@ -30,6 +30,7 @@ $notas = $controller->queryAllNotas();
 <div class="acciones-superiores">
     <a href="notas-form.php" class="boton">Nueva Nota</a>
     <a href="../../index.php" class="boton">Volver</a>
+    <a href="consultar-nota.php" class="boton">consultar nota</a>
 </div>
 
 <table>

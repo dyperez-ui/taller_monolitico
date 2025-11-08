@@ -1,16 +1,22 @@
 <?php
 require __DIR__ . '/../../controllers/materia-controller.php';
-use App\Controllers\MateriasController;
+require __DIR__ . '/../../controllers/estudiantes-controller.php';
 
-$controller = new MateriasController();
-$materias = $controller->queryAllMaterias();
+use App\Controllers\MateriasController;
+use App\Controllers\EstudianteController;
+
+$materiaController = new MateriasController();
+$estudianteController = new EstudianteController();
+
+// Obtener todas las materias
+$materias = $materiaController->queryAllMaterias();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Materias</title>
+    <title>Estudiantes por Materia</title>
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
@@ -25,47 +31,50 @@ $materias = $controller->queryAllMaterias();
     </nav>
 </header>
 
-<h1>Lista de Materias</h1>
+<h1>Estudiantes Registrados por Materia</h1>
 
 <div class="acciones-superiores">
-    <a href="materias-form.php" class="boton">Crear Nueva Materia</a>
-    <a href="consultar-materia.php" class="boton">Consultar Materia</a>
-    <a href="../../index.php" class="boton">Volver</a>
+    <a href="programas.php" class="boton">Volver a Programas</a>
+    <a href="../../index.php" class="boton">Volver al Inicio</a>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Programa</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($materias)): ?>
-            <?php foreach ($materias as $m): ?>
-                <tr>
-                    <td><?= $m->get('codigo') ?></td>
-                    <td><?= $m->get('nombre') ?></td>
-                    <td><?= $m->get('<progress></progress>rograma') ?></td>
-                    <td class="acciones">
-                        <button type="button" onclick="onClickBorrar('<?= $m->get('codigo') ?>')">
-                            <img src='../../public/imagenes/papelera.svg' alt='Borrar' width='25'>
-                        </button>
-                        <a href="materias-form.php?cod=<?= $m->get('codigo') ?>">
-                            <img src='../../public/imagenes/modificar.svg' alt='Modificar' width='25'>
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr><td colspan="4">No hay materias registradas.</td></tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+<?php if (!empty($materias)): ?>
+    <?php foreach ($materias as $materia): ?>
+        <section class="form-container">
+            <h2>Materia: <?= $materia->get('nombre') ?> (<?= $materia->get('codigo') ?>)</h2>
 
-<script src='../../public/js/materia.js'></script>
+            <?php
+            // Obtener los estudiantes asociados al programa de esta materia
+            $estudiantes = $estudianteController->queryEstudiantesPorPrograma($materia->get('programa'));
+            ?>
+
+            <?php if (!empty($estudiantes)): ?>
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($estudiantes as $e): ?>
+                            <tr>
+                                <td><?= $e->get('codigo') ?></td>
+                                <td><?= $e->get('nombre') ?></td>
+                                <td><?= $e->get('email') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No hay estudiantes registrados en esta materia.</p>
+            <?php endif; ?>
+        </section>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No hay materias registradas.</p>
+<?php endif; ?>
 
 </body>
 </html>

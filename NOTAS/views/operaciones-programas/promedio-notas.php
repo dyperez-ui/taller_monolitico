@@ -14,7 +14,7 @@ $todas_notas = $controller->queryAllNotas();
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
-    <h1>Promedios de Notas</h1>
+    <h1>Materias por estudiantes</h1>
 
     <div class="acciones-superiores">
         <a href="programas.php" class="boton">Volver</a>
